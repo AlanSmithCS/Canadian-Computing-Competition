@@ -53,13 +53,39 @@ Output for Sample Input 2
 
 */
 
+package CCC.CCC2023;
+
+import CCC.Challenge;
+
+import java.util.ArrayList;
 import java.util.Scanner;
-public class S1_Trianglane {
+public class S1_Trianglane extends Challenge {
+    final char UP = '^';
+    final char DOWN = 'v';
+
+    class Triangle {
+        public Triangle(int wet, ) {
+            if (wet == 0) {
+
+            } else {
+
+            }
+        }
+    }
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        ArrayList<Triangle> wetList = new ArrayList<>();
 
         System.out.println("Enter your value for C:");
         int C = scanner.nextInt();
+        int[][] triangles = new int[2][C];
+
+        System.out.println("Enter your value for row 0:");
+        for (int i=0; i<C-1; i++) {
+            int current_wet = scanner.nextInt();
+            Triangle current = new Triangle();
+        }
+        System.out.println("Enter your value for row 1:");
 
         System.out.println(C);
     }
