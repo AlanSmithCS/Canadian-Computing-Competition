@@ -60,33 +60,59 @@ import CCC.Challenge;
 import java.util.ArrayList;
 import java.util.Scanner;
 public class S1_Trianglane extends Challenge {
-    final char UP = '^';
-    final char DOWN = 'v';
+    static ArrayList<Triangle> wetList = new ArrayList<>();
+    static Triangle[][] all_triangles;
+    final int UP = 1;
+    final int DOWN = -1;
 
-    class Triangle {
-        public Triangle(int wet, ) {
-            if (wet == 0) {
+    static class Triangle {
+        int x, y;
+        public static int getOrientation (int index_x, int index_y) {
+            return (int) Math.pow(-1, index_x+index_y); // geometric sequence
+        }
+        int orientation;
+        Triangle[] wet_Neighbors;
+        public Triangle(int pos_x, int pos_y) {
+            this.orientation = getOrientation(pos_x, pos_y);
+            x = pos_x;
+            y = pos_y;
+        }
+    }
+    public static void getNextTriangles (int C, int row, Scanner scanner) {
+        System.out.println("Enter your value for row "+row+":");
 
-            } else {
+        // Get previous
+        int previous_wet = scanner.nextInt();
+        if (previous_wet == 1) {
+            Triangle current = new Triangle(0, row);
+            wetList.add(current);
+        }
 
+        for (int i=1; i<C; i++) {
+            int current_wet = scanner.nextInt();
+            if (current_wet == 1) {
+                Triangle current = new Triangle(i, row);
+                wetList.add(current);
             }
+            previous_wet = current_wet;
         }
     }
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        ArrayList<Triangle> wetList = new ArrayList<>();
 
         System.out.println("Enter your value for C:");
         int C = scanner.nextInt();
-        int[][] triangles = new int[2][C];
+        int rows = 2;
 
-        System.out.println("Enter your value for row 0:");
-        for (int i=0; i<C-1; i++) {
-            int current_wet = scanner.nextInt();
-            Triangle current = new Triangle();
+        all_triangles = new Triangle[rows][C];
+
+        for (int i=0; i<rows; i++) {
+            getNextTriangles(C, i, scanner);
         }
-        System.out.println("Enter your value for row 1:");
 
-        System.out.println(C);
+        System.out.println("\nwetList size: " + wetList.size());
+        for (Triangle t : wetList) {
+            System.out.println("("+t.x+", "+t.y+": "+t.orientation+")");
+        }
     }
 }
