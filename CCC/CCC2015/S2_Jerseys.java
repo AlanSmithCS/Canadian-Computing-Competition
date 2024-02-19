@@ -36,11 +36,14 @@ public class S2_Jerseys {
         for (int a=0; a<number_of_athletes; a++)
         {
             char size = scanner.next().charAt(0);
-            int number = scanner.nextInt();
+            int number = scanner.nextInt()-1;
 
-            if (stock[number][1] != 'X' && valid(stock[number][0], size)) {
-                fulfillable++;
-                stock[number][1] = 'X';
+            System.out.println("You are looking for: "+size+" with the number: "+number);
+            if (number < stock.length) {
+                if (stock[number][1] != 'X' && valid(stock[number][0], size)) {
+                    fulfillable++;
+                    stock[number][1] = 'X';
+                }
             }
         }
         System.out.println(fulfillable);
