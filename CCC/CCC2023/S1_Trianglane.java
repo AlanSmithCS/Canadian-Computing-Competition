@@ -55,11 +55,9 @@ Output for Sample Input 2
 
 package CCC.CCC2023;
 
-import CCC.Challenge;
-
 import java.util.ArrayList;
 import java.util.Scanner;
-public class S1_Trianglane extends Challenge {
+public class S1_Trianglane {
     static ArrayList<Triangle> wetList = new ArrayList<>();
     static Triangle[][] all_triangles;
     final int UP = 1;

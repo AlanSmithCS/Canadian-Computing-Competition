@@ -55,12 +55,10 @@ Output for Sample Input 2
 
 package CCC.CCC2015;
 
-import CCC.Challenge;
-
 import java.util.Scanner;
 import java.util.Stack;
 
-public class S1_Zero_That_Out extends Challenge {
+public class S1_Zero_That_Out {
     public static void main(String[] args) {
         Stack<Integer> inputStack = new Stack<>();
         Scanner scanner = new Scanner(System.in);
